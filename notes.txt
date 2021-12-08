@@ -1,0 +1,42 @@
+pass root : Born2BeRoot
+Encryption passphrase : PassEncrypBorn2BeRoot42
+
+Monitoring file : /usr/local/bin/monitoring.sh
+Sudo logs : /var/log/sudo/sudo.log
+
+Liste partitions : lsblk
+
+Add user in group : sudo usermod -aG group_name your_username
+Get users in group : getent group group_name
+
+Give privileges : sudo visudo
+
+SSH status : sudo systemctl status ssh
+Restart : sudo service ssh restart
+Check port : sudo grep Port /etc/ssh/sshd_config
+
+Enable UFW : sudo ufw enable
+UFW status : sudo ufw status numbered
+Config rules : sudo ufw allow ssh
+Config port : sudo ufw allow 4242
+Delete rule : sudo ufw delete 1
+
+Restart ssh server : sudo systemctl restart ssh
+Check status : sudo service sshd status
+
+From term : ssh rleseur@127.0.0.1 -p 4242
+
+Password : sudo nano /etc/pam.d/common-password
+Password expiration : sudo nano /etc/login.defs
+
+Create group : sudo groupadd NAME
+Delete group : sudo groupdel NAME
+Check groups : getent group
+
+Create user : sudo adduser NAME
+Get groups of user : groups
+
+Check password rules : chage -l your_new_username
+
+Current hostname : hostnamectl
+Change hostname : hostnamectl set-hostname new_hostname

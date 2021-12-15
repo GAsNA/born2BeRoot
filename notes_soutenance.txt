@@ -1,3 +1,15 @@
+------ Explications
+Diff Centos vs Debian:
+	- Debian can be upgraded / Centos have to be reinstall
+	- Debian est plus simple d'utilisation que Centos / est 'user-friendly'
+	- Debian a un plus large choix de packages que Centos
+
+Diff Aptitude vs Apt:
+	- Aptitude a un plus large choix de fonctionnalites / apt peut faire toute s les installations/upgrades de packages ainsi que de system
+
+What is AppArmor: logiciel de securite, permet a l'administrateur systemede securiser les programmes (afin de restreindre leurs capacites et donc de proteger lesysteme)
+
+------ Commands
 Check service is started: sudo systemctl status <name>
 
 Check OS: uname -a

@@ -1,37 +1,24 @@
 #!/bin/bash
-
-echo -ne "\t#Architecture: "
-
-echo -ne "\n\t#CPU physical : "
-nproc --all
-
-echo -ne "\t#vCPU : "
-
-echo -ne "\n\t#Memory Usage: "
-
-echo -ne "\n\t#Disk Usage: "
-
-echo -ne "\n\t#CPU load: "
-
-echo -ne "\n\t#Last boot: "
-who -b | cut -c 23-38
-
-echo -ne "\t#LVM use: "
-
-echo -ne "\n\t#Connexions TCP : "
-netstat -anp | grep :4242 | grep ESTABLISHED | wc -l | tr '\n' ' '
-echo "ESTABLISHED"
-
-echo -ne "\t#User log: "
-users | wc -l
-
-echo -ne "\t#Network: IP "
-ip -c a | grep "inet " | grep 10 | cut -c 15-23 | tr '\n' ' '
-echo -n "("
-ip -c a | grep ether | cut -c 21-37 | tr '\n' ')'
-echo ""
-
-echo -ne "\t#Sudo : "
-cat /var/log/sudo/sudo.log | grep TSID | wc -l | tr '\n' ' '
-echo "cmd"
-
+wall $'\t#Architecture: '`uname -a` \
+\
+$'\n\t#CPU physical : '`nproc --all` \
+\
+$'\n\t#vCPU : '`cat /proc/cpuinfo | grep processor | wc -l` \
+\
+$'\n\t'`free -m | awk 'NR == 2 {printf "#Memory Usage: %s/%sMB (%0.2f%%)", $3, $2, $3*100/$2}'` \
+\
+$'\n\t'`df -h | awk '$NF == "/"{printf "#Disk Usage: %d/%dGB (%s)", $3, $2, $5}'`\
+\
+$'\n\t'`mpstat | grep all | awk '{printf "#CPU Load: %0.2f%%", 100-$13}'`\
+\
+$'\n\t#Last boot: '`who -b | cut -c 23-38` \
+\
+$'\n\t#LVM use: '`lsblk | grep lvm | awk '{if ($1) {print "yes";exit;} else {print "no"} }'` \
+\
+$'\n\t#Connexions TCP : '`netsat -anp | grep :4242 | grep ESTABLISHED | wc -l`" ESTABLISHED" \
+\
+$'\n\t#User log: '`users | wc -l` \
+\
+$'\n\t#Network: IP '`hostname -I`"("`ip a | grep link/ether | awk '{print $2}'`")" \
+\
+$'\n\t'`cat /var/log/sudo/sudo.log | grep TSID | wc -l | awk '{printf "#Sudo : %d cmd", $1}'`

@@ -1,0 +1,49 @@
+Check service is started: sudo systemctl status <name>
+
+Check OS: uname -a
+
+Create group: sudo groupadd <name>
+Delete group: sudo groupdel <name>
+Check groups: getent group
+Check groups of user: groups
+Check users in group: getent group <name>
+Add user in group: sudo usermod -aG <group_name> <user_name>
+
+Password policy: sudo nano /etc/pam.d/common-password
+Password expiration: sudo nano /etc/login.defs
+Check password rules for user: chage -l <name>
+
+Create new user: sudo adduser <name>
+
+Check hostname: hostnamectl
+Change hostame: hostnamectl set-hostame <name>
+
+Check partitions: lsblk
+
+Check service is installed: dpkg -l | grep <name>
+
+Emplacemet sudo logs: /var/log/sudo/sudo.log
+
+Check active rules UFW: sudo ufw status numbered
+Add rule UFW: sudo ufw allow <port>
+Delete rule UFW: sudo ufrw delete <num>
+
+Connection SSH: ssh <name>@127.0.0.1 -p <port>
+
+Emplacement script: /usr/local/bin/monitoring.sh
+Change options script: sudo crontab -u root -e
+
+------ Bonuses
+WORDPRESS
+ftp 0.0.0.0
+rleseur
+Born2BeRoot
+Connexion localhost for website
+
+SERVICE -> ftp
+mkdir coucou
+get coucou
+
+------ memo
+config chiante: sudo nano /etc/vsftpd.conf
+config mariadb: sudo nano /var/www/html/wp-config.php

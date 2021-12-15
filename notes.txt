@@ -1,8 +1,12 @@
-pass root : Born2BeRoot
-Encryption passphrase : PassEncrypBorn2BeRoot42
+pass root : Born2BeBorn
+other pass : Born2BeRoot
+
+crontab : sudo crontab -u root -e
 
 Monitoring file : /usr/local/bin/monitoring.sh
 Sudo logs : /var/log/sudo/sudo.log
+
+Verif install : dpkg -l | grep
 
 Liste partitions : lsblk
 
@@ -40,3 +44,7 @@ Check password rules : chage -l your_new_username
 
 Current hostname : hostnamectl
 Change hostname : hostnamectl set-hostname new_hostname
+
+---------------------- BONUS
+user: rleseur
+pass: Born2BeRoot
